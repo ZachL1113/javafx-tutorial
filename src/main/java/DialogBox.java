@@ -46,6 +46,7 @@ public class DialogBox extends HBox {
     public static DialogBox getDukeDialog(String text, Image image) {
         DialogBox dialogBox = new DialogBox(text, image);
         dialogBox.flip();
+        dialogBox.dialog.getStyleClass().add("reply-label");
         return dialogBox;
     }
 }

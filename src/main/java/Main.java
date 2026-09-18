@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * Loads the chat interface from FXML.
+ * Loads the styled chat interface from FXML.
  */
 public class Main extends Application {
     private final Duke duke = new Duke();
@@ -22,6 +22,8 @@ public class Main extends Application {
 
             Scene scene = new Scene(mainLayout);
             stage.setTitle("Duke");
+            stage.setMinWidth(400);
+            stage.setMinHeight(600);
             stage.setScene(scene);
             stage.show();
         } catch (IOException exception) {

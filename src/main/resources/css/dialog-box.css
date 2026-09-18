@@ -1,0 +1,15 @@
+.label {
+    -fx-background-color: #2f6fed;
+    -fx-background-radius: 12;
+    -fx-text-fill: white;
+    -fx-padding: 8 12;
+}
+
+.reply-label {
+    -fx-background-color: #e4eaf4;
+    -fx-text-fill: #172033;
+}
+
+#displayPicture {
+    -fx-effect: dropshadow(gaussian, rgba(32, 48, 72, 0.28), 6, 0.15, 0, 2);
+}

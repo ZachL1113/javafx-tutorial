@@ -7,23 +7,24 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="600.0" prefWidth="400.0"
+            stylesheets="@../css/main.css"
             xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="MainWindow">
     <children>
         <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER"
-                    AnchorPane.topAnchor="1.0" AnchorPane.bottomAnchor="45.0"
-                    AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0">
+                    AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="48.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <content>
                 <VBox fx:id="dialogContainer" fillWidth="true" spacing="8.0" />
             </content>
         </ScrollPane>
         <TextField fx:id="userInput" onAction="#handleUserInput"
-                   prefHeight="40.0" promptText="Type a message..."
-                   AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0"
-                   AnchorPane.rightAnchor="76.0" />
+                   prefHeight="42.0" promptText="Type a message..."
+                   AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0"
+                   AnchorPane.rightAnchor="82.0" />
         <Button mnemonicParsing="false" onAction="#handleUserInput"
-                prefHeight="40.0" prefWidth="75.0" text="Send"
-                AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" />
+                prefHeight="42.0" prefWidth="76.0" text="Send"
+                AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="3.0" />
     </children>
 </AnchorPane>
