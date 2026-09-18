@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -9,9 +11,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Builds the chat interface using Java code.
+ * Builds an interactive chat interface using Java code.
  */
 public class Main extends Application {
+    private final Duke duke = new Duke();
     private final Image userImage = new Image(
             Main.class.getResourceAsStream("/images/DaUser.png"));
     private final Image dukeImage = new Image(
@@ -27,9 +30,21 @@ public class Main extends Application {
 
         scrollPane.setContent(dialogContainer);
         scrollPane.setFitToWidth(true);
-        dialogContainer.getChildren().addAll(
-                new DialogBox("Hello! I'm the user.", userImage),
-                new DialogBox("Hello! I'm Duke.", dukeImage));
+        scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+
+        EventHandler<ActionEvent> sendMessage = event -> {
+            String input = userInput.getText();
+            if (input.isBlank()) {
+                return;
+            }
+            String response = duke.getResponse(input);
+            dialogContainer.getChildren().addAll(
+                    DialogBox.getUserDialog(input, userImage),
+                    DialogBox.getDukeDialog(response, dukeImage));
+            userInput.clear();
+        };
+        userInput.setOnAction(sendMessage);
+        sendButton.setOnAction(sendMessage);
 
         mainLayout.getChildren().addAll(scrollPane, userInput, sendButton);
         AnchorPane.setTopAnchor(scrollPane, 1.0);
