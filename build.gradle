@@ -7,20 +7,29 @@ plugins {
 java {
     sourceCompatibility = JavaVersion.VERSION_25
     targetCompatibility = JavaVersion.VERSION_25
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
 }
 
 repositories {
     mavenCentral()
 }
 
-application {
-    mainClass.set("Duke")
+dependencies {
+    def javaFxVersion = '17.0.7'
+    def platforms = ['win', 'mac', 'linux']
+
+    platforms.each { platform ->
+        implementation "org.openjfx:javafx-base:${javaFxVersion}:${platform}"
+        implementation "org.openjfx:javafx-controls:${javaFxVersion}:${platform}"
+        implementation "org.openjfx:javafx-fxml:${javaFxVersion}:${platform}"
+        implementation "org.openjfx:javafx-graphics:${javaFxVersion}:${platform}"
+    }
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
-    }
+application {
+    mainClass.set("Launcher")
 }
 
 shadowJar {
